@@ -1,5 +1,6 @@
 package com.tya;
 
+import com.tya.jdeis.util.JedisConnectionFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,9 @@ public class jedis {
     @BeforeEach
      public void setUp() {
         //建立连接
-        jedis = new Jedis("192.168.121.121", 6379);
+        //jedis = new Jedis("192.168.121.121", 6379);
+        //配置完成后从池子里获取连接
+        jedis = JedisConnectionFactory.getJedis();
         //设置密码
         jedis.auth("tya");
         //选择库
